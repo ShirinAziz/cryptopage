@@ -1,9 +1,11 @@
 import React from "react";
 import CoinItem from "./CoinItem";
+import { Link } from "react-router-dom";
+import Coin from "./Coin";
 
 const Coins = ({ coins }) => {
   return (
-    <div className="max-w-[1140] m-auto">
+    <div className="container">
       <div>
         <div className="heading flex justify-between items-center bg-[#26272b] font-bold">
           <p>#</p>
@@ -15,7 +17,11 @@ const Coins = ({ coins }) => {
         </div>
 
         {coins.map((coins) => {
-          return <CoinItem coins={coins} key={coins.id} />;
+          return (
+            <Link to={`/coin/${coins.id}`} element={<Coin />} key={coins.id}>
+              <CoinItem coins={coins} />
+            </Link>
+          );
         })}
       </div>
     </div>
